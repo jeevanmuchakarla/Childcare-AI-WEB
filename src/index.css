@@ -1,0 +1,64 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --primary: #00A3FF;
+  --primary-rgb: 0, 163, 255;
+  --primary-hover: #0081cc;
+  --accent-green: #20C997;
+}
+
+@theme {
+  --color-primary: var(--primary); /* Direct iOS match */
+  --color-secondary: var(--accent-green);
+  --color-admin: #8B5CF6;
+  --color-coral: #FF4757;
+  --color-sunset: #FF8C00;
+  
+  --color-app-bg: #F8F9FA;
+  --color-app-bg-dark: #1A1B2E;
+  
+  --color-app-surface: #FFFFFF;
+  --color-app-surface-dark: #252638;
+  
+  --color-text-primary: #111827;
+  --color-text-primary-dark: #FFFFFF;
+  
+  --color-text-secondary: #6B7280;
+  --color-text-secondary-dark: #9CA3AF;
+
+  --radius-app: 16px;
+  
+  --shadow-card: 0 4px 6px -1px rgb(0 0 0 / 0.04);
+  --shadow-premium: 0 10px 15px -3px rgba(0, 163, 255, 0.12);
+}
+
+@layer base {
+  body {
+    @apply bg-app-bg text-text-primary antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  .dark body {
+    @apply bg-app-bg-dark text-text-primary-dark;
+  }
+}
+
+@layer components {
+  .ios-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .premium-card {
+    @apply bg-app-surface dark:bg-app-surface-dark rounded-app shadow-card border border-black/5 dark:border-white/5;
+  }
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-shine {
+  animation: shine 1.5s ease-in-out infinite;
+}
